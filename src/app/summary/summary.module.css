@@ -1,0 +1,496 @@
+/* Container & Common */
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--pure-black);
+  padding: 100px 20px 80px;
+  color: var(--pure-black);
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Giant background decorative text */
+.giantBgText {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22vw;
+  color: var(--pure-white);
+  opacity: 0.08;
+  z-index: 0;
+  white-space: nowrap;
+  font-weight: 900;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Back Link Button */
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--pure-white);
+  color: var(--pure-black);
+  padding: 10px 20px;
+  border: 4px solid var(--pure-black);
+  box-shadow: 4px 4px 0 #000;
+  font-weight: 900;
+  margin-bottom: 40px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+}
+
+.backBtn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+/* Title */
+.title {
+  font-size: 4rem;
+  color: var(--neon-yellow);
+  text-shadow: 6px 6px 0 var(--pure-black), -2px -2px 0 var(--pure-black), 2px -2px 0 var(--pure-black), -2px 2px 0 var(--pure-black), 2px 2px 0 var(--pure-black);
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+/* Brutalist Input Card */
+.card {
+  background-color: var(--neon-pink);
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+  padding: 40px;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  background: var(--pure-white);
+  color: var(--pure-black);
+  display: inline-block;
+  padding: 5px 15px;
+  border: 4px solid var(--pure-black);
+  margin-bottom: 25px;
+  font-weight: 900;
+  transform: rotate(-1.5deg);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  display: block;
+  text-transform: uppercase;
+  color: var(--pure-white);
+  text-shadow: 2px 2px 0 #000;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 4px solid var(--pure-black);
+  margin-bottom: 25px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  background: var(--pure-white);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.input:focus {
+  outline: none;
+  background: var(--neon-yellow);
+}
+
+.textarea {
+  width: 100%;
+  height: 180px;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: 4px solid var(--pure-black);
+  margin-bottom: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  background: var(--pure-white);
+  box-shadow: 4px 4px 0 #000;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  background: var(--neon-yellow);
+}
+
+/* Template Select Buttons */
+.templateGroup {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.templateLabel {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--pure-white);
+  text-shadow: 1.5px 1.5px 0 #000;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.templateBtn {
+  background: var(--neon-purple);
+  color: var(--pure-white);
+  padding: 10px 20px;
+  border: 3px solid var(--pure-black);
+  box-shadow: 3px 3px 0 #000;
+  font-size: 0.95rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.templateBtn:hover {
+  background: var(--neon-yellow);
+  color: var(--pure-black);
+}
+
+.templateBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+/* Submit Action Button */
+.submitBtn {
+  width: 100%;
+  background: var(--neon-green);
+  color: var(--pure-black);
+  padding: 20px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  border: 4px solid var(--pure-black);
+  box-shadow: 8px 8px 0 #000;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.submitBtn:hover {
+  background: var(--pure-white);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.submitBtn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.8;
+  transform: none;
+  box-shadow: 4px 4px 0 #000;
+}
+
+/* Result Section Styles */
+.resultTitle {
+  font-size: 3rem;
+  color: var(--neon-green);
+  text-shadow: 5px 5px 0 var(--pure-black), -1.5px -1.5px 0 var(--pure-black), 1.5px -1.5px 0 var(--pure-black), -1.5px 1.5px 0 var(--pure-black), 1.5px 1.5px 0 var(--pure-black);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-weight: 900;
+}
+
+.resultCard {
+  background-color: var(--pure-white);
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.resultTitleBadge {
+  font-size: 1.5rem;
+  background: var(--neon-yellow);
+  color: var(--pure-black);
+  display: inline-block;
+  padding: 5px 15px;
+  border: 4px solid var(--pure-black);
+  margin-bottom: 20px;
+  font-weight: 900;
+  box-shadow: 4px 4px 0 #000;
+  transform: rotate(-1deg);
+}
+
+.resultSection {
+  margin-bottom: 35px;
+  border-bottom: 3px dashed var(--pure-black);
+  padding-bottom: 30px;
+}
+
+.resultSection:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sectionHeading {
+  font-size: 1.6rem;
+  background: var(--pure-black);
+  color: var(--pure-white);
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  font-weight: 900;
+}
+
+.sectionHeading.purple { background-color: var(--neon-purple); }
+.sectionHeading.pink { background-color: var(--neon-pink); color: var(--pure-white); }
+
+.overviewText {
+  font-size: 1.15rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.list {
+  padding-left: 0;
+}
+
+.listItem {
+  margin-bottom: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.4;
+}
+
+.bullet {
+  color: var(--neon-pink);
+  font-weight: 900;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.todoBadge {
+  background: var(--neon-green);
+  color: var(--pure-black);
+  border: 2px solid var(--pure-black);
+  font-size: 0.8rem;
+  padding: 1px 6px;
+  font-weight: 900;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Footer Action Buttons */
+.actionBtnGroup {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.shareBtn {
+  background: var(--neon-pink);
+  color: var(--pure-white);
+  padding: 18px 36px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  border: 4px solid var(--pure-black);
+  box-shadow: 6px 6px 0 #000;
+  cursor: pointer;
+  text-shadow: 2px 2px 0px #000;
+  transition: all 0.1s ease;
+}
+
+.shareBtn:hover {
+  background: var(--pure-white);
+  color: var(--pure-black);
+  text-shadow: none;
+}
+
+.shareBtn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 #000;
+}
+
+.resetBtn {
+  background: var(--pure-white);
+  color: var(--pure-black);
+  padding: 18px 36px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  border: 4px solid var(--pure-black);
+  box-shadow: 6px 6px 0 #000;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.resetBtn:hover {
+  background: var(--neon-yellow);
+}
+
+.resetBtn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 #000;
+}
+
+/* Share Modal Overlay & Content */
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  background: var(--neon-pink);
+  padding: 50px;
+  border: var(--brutal-border);
+  box-shadow: 20px 20px 0 0 #000;
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  transform: rotate(-1.5deg);
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: var(--neon-yellow);
+  color: var(--pure-black);
+  border: 4px solid var(--pure-black);
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.1s ease;
+}
+
+.modalCloseBtn:hover {
+  background: var(--pure-white);
+}
+
+.modalCloseBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.modalTitle {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  color: var(--pure-white);
+  text-shadow: 4px 4px 0 #000;
+  font-weight: 900;
+}
+
+.modalInput {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.4rem;
+  border: 4px solid var(--pure-black);
+  margin-bottom: 25px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  box-shadow: 5px 5px 0 #000;
+}
+
+.modalInput:focus {
+  outline: none;
+  background-color: var(--neon-yellow);
+}
+
+.modalSubmitBtn {
+  width: 100%;
+  background: var(--neon-green);
+  color: var(--pure-black);
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 4px solid var(--pure-black);
+  cursor: pointer;
+  box-shadow: 8px 8px 0 #000;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+
+.modalSubmitBtn:hover {
+  background: var(--pure-white);
+}
+
+.modalSubmitBtn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.modalSubmitBtn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 4px 4px 0 #000;
+}
+
+/* Toast Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(120%) rotate(-1deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(-1deg);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main { padding-top: 60px; }
+  .title { font-size: 2.5rem; }
+  .card { padding: 25px; }
+  .cardTitle { font-size: 1.5rem; }
+  .submitBtn { font-size: 1.2rem; }
+  .resultTitle { font-size: 2rem; }
+  .resultCard { padding: 20px; }
+  .resultTitleBadge { font-size: 1.2rem; }
+  .sectionHeading { font-size: 1.2rem; }
+  .overviewText { font-size: 1rem; }
+  .listItem { font-size: 0.95rem; }
+  .shareBtn, .resetBtn { padding: 12px 24px; font-size: 1.1rem; }
+  .modalContent { transform: none; padding: 30px; }
+  .modalTitle { font-size: 2rem; }
+}

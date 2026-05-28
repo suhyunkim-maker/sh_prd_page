@@ -59,7 +59,10 @@
 
 /* Button */
 .ctaBtn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background-color: var(--neon-yellow);
   color: var(--pure-black);
   padding: 20px 40px;

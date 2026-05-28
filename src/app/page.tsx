@@ -1,12 +1,45 @@
 'use client';
-import { useState } from 'react';
+
+import { useState, FormEvent } from 'react';
+import Link from 'next/link';
 import styles from './page.module.css';
+import { sendWelcomeEmail } from './actions';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setEmail('');
+    setIsLoading(false);
+    setMessage(null);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      setMessage({ type: 'error', text: '이메일 주소를 입력해 주세요!' });
+      return;
+    }
+    setIsLoading(true);
+    setMessage(null);
+    try {
+      const result = await sendWelcomeEmail(email);
+      if (result.success) {
+        setMessage({ type: 'success', text: '🎉 신청이 완료되었습니다! 입력하신 메일함에서 웰컴 메일을 확인해 주세요!' });
+      } else {
+        setMessage({ type: 'error', text: result.error || '신청 중 문제가 발생했습니다. 다시 시도해 주세요.' });
+      }
+    } catch (err) {
+      setMessage({ type: 'error', text: '네트워크 또는 서버 오류가 발생했습니다.' });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main className={styles.main}>
@@ -23,8 +56,11 @@ export default function Home() {
           <p className={styles.heroSubtitle}>
             리마인드와 진척도 확인, 시스템에 맡기세요.
           </p>
-          <div>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button className={styles.ctaBtn} onClick={openModal}>무료 체험 시작하기!</button>
+            <Link href="/summary" className={styles.ctaBtn} style={{ backgroundColor: 'var(--neon-pink)', color: 'var(--pure-white)' }}>
+              AI 회의 요약 체험하기 ⚡
+            </Link>
           </div>
           
           <div className={styles.heroImageWrap}>
@@ -171,11 +207,59 @@ export default function Home() {
           <div className={styles.modalContent}>
             <button className={styles.modalCloseBtn} onClick={closeModal}>X</button>
             <h2 className={styles.modalTitle}>무료 체험 시작!</h2>
-            <input type="email" placeholder="이메일을 입력하세요!" className={styles.modalInput} />
-            <button className={styles.modalSubmitBtn} onClick={() => {
-              alert('신청되었습니다! 팝아트 감성을 느껴보세요!');
-              closeModal();
-            }}>신청하기!</button>
+            
+            {message && message.type === 'success' ? (
+              <div>
+                <div style={{
+                  backgroundColor: 'var(--neon-green)',
+                  color: 'var(--pure-black)',
+                  border: '4px solid var(--pure-black)',
+                  padding: '20px',
+                  marginBottom: '25px',
+                  fontSize: '1.2rem',
+                  fontWeight: 'bold',
+                  boxShadow: '6px 6px 0 #000',
+                  transform: 'rotate(1deg)'
+                }}>
+                  {message.text}
+                </div>
+                <button className={styles.modalSubmitBtn} onClick={closeModal}>닫기!</button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                {message && message.type === 'error' && (
+                  <div style={{
+                    backgroundColor: 'var(--neon-yellow)',
+                    color: 'var(--pure-black)',
+                    border: '4px solid var(--pure-black)',
+                    padding: '12px',
+                    marginBottom: '15px',
+                    fontSize: '1rem',
+                    fontWeight: 'bold',
+                    boxShadow: '4px 4px 0 #000',
+                    transform: 'rotate(-1deg)'
+                  }}>
+                    ⚠️ {message.text}
+                  </div>
+                )}
+                <input 
+                  type="email" 
+                  placeholder="이메일을 입력하세요!" 
+                  className={styles.modalInput} 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
+                  required
+                />
+                <button 
+                  type="submit" 
+                  className={styles.modalSubmitBtn} 
+                  disabled={isLoading}
+                >
+                  {isLoading ? '신청 중...' : '신청하기!'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       )}
