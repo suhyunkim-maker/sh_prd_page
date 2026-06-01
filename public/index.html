@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>E-Land Intelligence | Meeting Recorder Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Geist', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#7c8da4",
+                      "on-primary-container": "#738aca",
+                      "tertiary-fixed": "#d3e4fe",
+                      "on-primary-fixed-variant": "#2d447f",
+                      "outline": "#757681",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "secondary-fixed": "#e4e2e1",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#5f5e5e",
+                      "surface-container": "#eceef0",
+                      "secondary-container": "#e4e2e1",
+                      "surface-container-highest": "#e0e3e5",
+                      "primary-container": "#00205b",
+                      "tertiary": "#001022",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "inverse-surface": "#2d3133",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-fixed": "#001849",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#444650",
+                      "surface": "#f7f9fb",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#152539",
+                      "outline-variant": "#c5c6d1",
+                      "inverse-on-surface": "#eff1f3",
+                      "primary-fixed": "#dae2ff",
+                      "on-surface": "#191c1e",
+                      "error-container": "#ffdad6",
+                      "on-background": "#191c1e",
+                      "inverse-primary": "#b2c5ff",
+                      "secondary-fixed-dim": "#c8c6c6",
+                      "on-secondary-container": "#656464",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e0e3e5",
+                      "primary": "#000d2f",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#455c99",
+                      "surface-bright": "#f7f9fb",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "background": "#f7f9fb",
+                      "surface-dim": "#d8dadc",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-fixed-variant": "#474747"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin_desktop": "40px",
+                      "sidebar_width": "260px",
+                      "unit": "8px",
+                      "container_max_width": "1200px",
+                      "margin_mobile": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "title-sm": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "stt-interim": ["Geist"],
+                      "body-lg": ["Geist"],
+                      "display-lg": ["Geist"]
+              },
+              "fontSize": {
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "title-sm": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "stt-interim": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface dark:bg-primary border-r border-outline-variant dark:border-primary-container flex flex-col z-50">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-on-primary">SH-Land</h1>
+<p class="text-secondary dark:text-on-primary-fixed-variant text-[12px] font-medium tracking-wide">Hospitality Management</p>
+</div>
+<nav class="flex-1 px-4 mt-6 space-y-2">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 border-l-4 border-primary dark:border-primary-fixed-dim bg-surface-container-high dark:bg-primary-container text-primary dark:text-on-primary-container font-bold transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<!-- Recent Meetings -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-primary-fixed-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container dark:hover:bg-tertiary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-md text-body-md">Recent Meetings</span>
+</a>
+<!-- Meeting Templates -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-primary-fixed-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container dark:hover:bg-tertiary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md text-body-md">Meeting Templates</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-primary-fixed-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container dark:hover:bg-tertiary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant dark:border-primary-container">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                Start New Meeting
+            </button>
+</div>
+<div class="px-4 pb-6">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-on-primary-fixed-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md text-body-md">Help Center</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-260px)] h-16 bg-surface-container-lowest dark:bg-primary border-b border-outline-variant dark:border-primary-container flex justify-between items-center px-[40px] z-40">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-primary dark:text-on-primary">SH-Land</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group hidden md:block">
+<input class="bg-surface-container-low border border-outline-variant rounded-full px-4 py-1.5 text-sm w-64 focus:outline-none focus:border-primary transition-all" placeholder="Search recordings..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-1.5 text-secondary text-[20px]" data-icon="search">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="text-secondary hover:text-primary transition-all active:scale-95 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="flex items-center gap-2 cursor-pointer hover:opacity-80">
+<img alt="User Profile" class="w-8 h-8 rounded-full bg-surface-variant object-cover" data-alt="A professional headshot of a corporate executive in a hotel management role. The individual is wearing a sharp navy suit and is positioned against a clean, minimalist architectural background with soft daylight. The image is crisp, high-resolution, and communicates authority and discretion in a premium hospitality setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3ENiJiju9thxSfL7D176BHtleW2w4xkv5tpooew_UU0QW20dn7iPWoQCWtqC0uM-fLJhYt2R7MlLi8o8Ew90IT-L9p8g0002gnX738yICmIlHL3a-6m3bCGlQQ8yz7wfaGdrBfphgXzf6CLhsurT78ibBJUI9i5WC0ia5on7z7WlTH6IYaRCN3C1w6fyLlcF3QD3ww_T2Kx0_pWCQUnRTPWLTW8lmrNPh8MYBEBmLmcVm384UKBaj43PLX8j04BNUDDD2UYVf1so">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[260px] pt-16 min-h-screen">
+<div class="max-w-[1200px] mx-auto px-margin_desktop py-12">
+<!-- Welcome Header -->
+<div class="mb-10">
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Welcome back, Director</h2>
+<p class="text-secondary font-body-lg">The intelligence dashboard is up to date with 12 new transcripts from this morning.</p>
+</div>
+<!-- Bento Statistics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant flex flex-col">
+<span class="font-label-caps text-label-caps text-on-secondary-container mb-4">TOTAL MEETINGS</span>
+<div class="flex items-baseline gap-2">
+<span class="text-[32px] font-bold text-primary">148</span>
+<span class="text-green-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span> 12%</span>
+</div>
+<p class="text-[12px] text-secondary mt-auto">vs previous month</p>
+</div>
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant flex flex-col">
+<span class="font-label-caps text-label-caps text-on-secondary-container mb-4">MINUTES RECORDED</span>
+<div class="flex items-baseline gap-2">
+<span class="text-[32px] font-bold text-primary">3,240</span>
+<span class="text-secondary text-sm">min</span>
+</div>
+<p class="text-[12px] text-secondary mt-auto">High efficiency week</p>
+</div>
+<div class="col-span-2 bg-primary text-on-primary p-6 rounded-xl border border-primary-container relative overflow-hidden group">
+<div class="relative z-10 flex flex-col h-full">
+<span class="font-label-caps text-label-caps text-on-primary-container mb-4">QUICK START</span>
+<h3 class="text-xl font-bold mb-4">Capture critical insights now.</h3>
+<button class="mt-auto bg-on-primary text-primary px-6 py-2 rounded font-bold text-sm hover:bg-surface-container-lowest transition-all w-fit">
+                            Start New Meeting
+                        </button>
+</div>
+<!-- Abstract Background Pattern -->
+<div class="absolute right-0 top-0 w-32 h-32 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+<span class="material-symbols-outlined text-[120px]" data-icon="mic_external_on" style="font-variation-settings: 'FILL' 1;">mic_external_on</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<!-- Recent Meetings List -->
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">Recent Meetings</h3>
+<a class="text-sm font-bold text-primary hover:underline flex items-center gap-1" href="#">
+                            View All History <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="space-y-4">
+<!-- Meeting Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant hover:shadow-md transition-all group cursor-pointer">
+<div class="flex items-start justify-between mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-surface-container rounded text-[10px] font-bold tracking-wider text-primary">OPERATIONS</span>
+<span class="text-[12px] text-secondary">October 24, 2023 • 42m</span>
+</div>
+<h4 class="font-title-sm text-title-sm text-primary group-hover:text-surface-tint transition-colors">Q4 Luxury Suite Refurbishment Strategy</h4>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="more_vert">more_vert</span>
+</div>
+<p class="text-body-md text-secondary line-clamp-2">The focus was on selecting sustainable materials that align with the 2024 environmental goals while maintaining the 5-star premium aesthetic for the E-Land flagship property...</p>
+<div class="flex items-center gap-4 mt-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-outline-variant border-2 border-white flex items-center justify-center text-[8px] font-bold">JD</div>
+<div class="w-6 h-6 rounded-full bg-primary-container text-white border-2 border-white flex items-center justify-center text-[8px] font-bold">AS</div>
+</div>
+<span class="text-[11px] font-bold text-on-tertiary-container uppercase tracking-widest">3 Participants</span>
+</div>
+</div>
+<!-- Meeting Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant hover:shadow-md transition-all group cursor-pointer">
+<div class="flex items-start justify-between mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-surface-container rounded text-[10px] font-bold tracking-wider text-primary">HUMAN RESOURCES</span>
+<span class="text-[12px] text-secondary">October 23, 2023 • 15m</span>
+</div>
+<h4 class="font-title-sm text-title-sm text-primary group-hover:text-surface-tint transition-colors">Weekly Concierge Training Alignment</h4>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="more_vert">more_vert</span>
+</div>
+<p class="text-body-md text-secondary line-clamp-2">Brief session covering the new guest onboarding protocol for the presidential suites. Emphasized the "discreet service" principle...</p>
+<div class="flex items-center gap-4 mt-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-outline-variant border-2 border-white flex items-center justify-center text-[8px] font-bold">ML</div>
+</div>
+<span class="text-[11px] font-bold text-on-tertiary-container uppercase tracking-widest">1 Participant</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar / Shortcuts -->
+<div class="space-y-8">
+<!-- Templates Card -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+<h4 class="font-title-sm text-title-sm text-primary mb-4">Templates</h4>
+<div class="space-y-3">
+<button class="w-full text-left p-3 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-white transition-all flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="hotel">hotel</span>
+<span class="font-body-md text-body-md">Guest Feedback Analysis</span>
+</button>
+<button class="w-full text-left p-3 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-white transition-all flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="restaurant">restaurant</span>
+<span class="font-body-md text-body-md">F&amp;B Inventory Sync</span>
+</button>
+<button class="w-full text-left p-3 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-white transition-all flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="security">security</span>
+<span class="font-body-md text-body-md">Monthly Safety Audit</span>
+</button>
+</div>
+</div>
+<!-- Storage Card -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-title-sm text-title-sm text-primary">Intelligence Cloud</h4>
+<span class="text-[12px] font-bold text-primary">82%</span>
+</div>
+<div class="w-full h-2 bg-outline-variant rounded-full overflow-hidden mb-3">
+<div class="w-[82%] h-full bg-primary"></div>
+</div>
+<p class="text-[12px] text-secondary">You have used 41GB of your 50GB premium storage. <a class="text-primary font-bold hover:underline" href="#">Upgrade</a></p>
+</div>
+<!-- Promotional Image Area -->
+<div class="rounded-xl overflow-hidden relative h-48 border border-outline-variant">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="A cinematic, low-angle shot of a grand E-Land Hotel lobby. The architecture features soaring marble columns and a minimalist crystal chandelier. The lighting is dramatic and moody, reflecting a high-end corporate environment. The image is captured in a high-contrast black and white style to evoke a sense of timeless elegance and professional authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc5Nannpz_sXKfkwsafuFkyFsR1DOgoRSDMtEEZnH3V6XSfiXJq8BjWm2Zn1WsmIgsKICe9Bt19h9902wktgGXoHrInVadvJ_5tEb-4iHUbdsWEgIROfZ5AeAc_5mBke5LEjkprIGRczfUAm21D_6bbo5yz-kCYH0BFkSqI_AS_yV-CD202aiMfQ1YeL257DUKdUa1pH1tdY2mZ2B9lr8k-1r307fFc6Uy-9_9fEBnVjGBCks-999KbpM5Qqqa_rxOt4BAHnobCwQ">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-4">
+<span class="text-white font-bold text-xs mb-1">INSIGHTS</span>
+<p class="text-white text-sm leading-tight">Leverage AI to summarize 100+ hours of hotel operations.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Recording Pulse Indicator (Floating) -->
+<div class="fixed bottom-8 right-8 bg-surface-container-lowest px-4 py-2 rounded-full border border-outline-variant shadow-lg flex items-center gap-3 z-[60] cursor-pointer hover:bg-surface transition-all" id="recording-status">
+<div class="w-3 h-3 bg-slate-400 rounded-full" id="pulse-dot"></div>
+<span class="font-label-caps text-label-caps text-secondary" id="pulse-text">SYSTEM IDLE</span>
+</div>
+<script>
+        // Micro-interaction for the status indicator
+        const pulseDot = document.getElementById('pulse-dot');
+        const pulseText = document.getElementById('pulse-text');
+        const statusBox = document.getElementById('recording-status');
+        let isRecording = false;
+
+        statusBox.addEventListener('click', () => {
+            isRecording = !isRecording;
+            if (isRecording) {
+                pulseDot.classList.remove('bg-slate-400');
+                pulseDot.classList.add('bg-green-600', 'animate-pulse');
+                pulseText.innerText = 'RECORDING ACTIVE';
+                pulseText.classList.remove('text-secondary');
+                pulseText.classList.add('text-green-600');
+            } else {
+                pulseDot.classList.add('bg-slate-400');
+                pulseDot.classList.remove('bg-green-600', 'animate-pulse');
+                pulseText.innerText = 'SYSTEM IDLE';
+                pulseText.classList.add('text-secondary');
+                pulseText.classList.remove('text-green-600');
+            }
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.classList.add('w-80');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.classList.remove('w-80');
+        });
+    </script>
+
+
+<!-- Floating Navigation Menu Bar Injection -->
+<div id="stitch-nav-bar" style="position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 999999; display: flex; align-items: center; gap: 8px; padding: 8px; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 99px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: bold; letter-spacing: -0.01em;">
+  <a href="index.html" class="nav-item-btn" style="padding: 10px 20px; color: #fff; text-decoration: none; border-radius: 99px; transition: all 0.2s; display: flex; align-items: center; gap: 6px;">
+    📊 Dashboard
+  </a>
+  <a href="setup.html" class="nav-item-btn" style="padding: 10px 20px; color: #fff; text-decoration: none; border-radius: 99px; transition: all 0.2s; display: flex; align-items: center; gap: 6px;">
+    🛠️ Setup
+  </a>
+  <a href="editor.html" class="nav-item-btn" style="padding: 10px 20px; color: #fff; text-decoration: none; border-radius: 99px; transition: all 0.2s; display: flex; align-items: center; gap: 6px;">
+    🎙️ Live Editor
+  </a>
+</div>
+
+<style>
+  #stitch-nav-bar a:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const path = window.location.pathname;
+    const page = path.split("/").pop() || "index.html";
+    const items = document.querySelectorAll("#stitch-nav-bar a");
+    items.forEach(item => {
+      const href = item.getAttribute("href");
+      if (href === page || (page === "" && href === "index.html") || (page.indexOf(href) !== -1)) {
+        item.style.background = "#C5A880";
+        item.style.color = "#0B2240";
+      }
+    });
+  });
+</script>
+</body></html>

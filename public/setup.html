@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>E-Land Recorder - Meeting Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .modal-overlay {
+            backdrop-filter: blur(4px);
+            background-color: rgba(25, 28, 30, 0.4);
+        }
+        /* Custom date picker appearance reset */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#7c8da4",
+                      "on-primary-container": "#738aca",
+                      "tertiary-fixed": "#d3e4fe",
+                      "on-primary-fixed-variant": "#2d447f",
+                      "outline": "#757681",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "secondary-fixed": "#e4e2e1",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#5f5e5e",
+                      "surface-container": "#eceef0",
+                      "secondary-container": "#e4e2e1",
+                      "surface-container-highest": "#e0e3e5",
+                      "primary-container": "#00205b",
+                      "tertiary": "#001022",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "inverse-surface": "#2d3133",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-fixed": "#001849",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#444650",
+                      "surface": "#f7f9fb",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#152539",
+                      "outline-variant": "#c5c6d1",
+                      "inverse-on-surface": "#eff1f3",
+                      "primary-fixed": "#dae2ff",
+                      "on-surface": "#191c1e",
+                      "error-container": "#ffdad6",
+                      "on-background": "#191c1e",
+                      "inverse-primary": "#b2c5ff",
+                      "secondary-fixed-dim": "#c8c6c6",
+                      "on-secondary-container": "#656464",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e0e3e5",
+                      "primary": "#000d2f",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#455c99",
+                      "surface-bright": "#f7f9fb",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "background": "#f7f9fb",
+                      "surface-dim": "#d8dadc",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-fixed-variant": "#474747"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin_desktop": "40px",
+                      "sidebar_width": "260px",
+                      "unit": "8px",
+                      "container_max_width": "1200px",
+                      "margin_mobile": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "title-sm": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "stt-interim": ["Geist"],
+                      "body-lg": ["Geist"],
+                      "display-lg": ["Geist"]
+              },
+              "fontSize": {
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "title-sm": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "stt-interim": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background overflow-hidden">
+<!-- Browser Compatibility Banner -->
+<div class="fixed top-0 left-0 right-0 z-[100] bg-primary text-on-primary py-2 px-margin_desktop flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<p class="font-body-md text-body-md">Optimized for Chrome</p>
+</div>
+<!-- SideNavBar (Background/Dimmed) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface border-r border-outline-variant flex flex-col opacity-40 select-none pointer-events-none transition-opacity duration-500">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SH-Land</h1>
+<p class="font-body-md text-body-md text-secondary">Hospitality Management</p>
+</div>
+<nav class="mt-8 flex-grow">
+<div class="px-4 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">Recent Meetings</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Meeting Templates</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</div>
+</div>
+</nav>
+<div class="p-6 border-t border-outline-variant">
+<div class="flex items-center gap-3 px-4 py-3 text-secondary">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Help Center</span>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (Background/Dimmed) -->
+<header class="fixed top-0 right-0 w-[calc(100%-260px)] h-16 bg-surface-container-lowest flex justify-between items-center px-margin_desktop border-b border-outline-variant opacity-40 select-none pointer-events-none transition-opacity duration-500">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">E-Land Recorder</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-secondary">mic</span>
+<span class="material-symbols-outlined text-secondary">notifications</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container"></div>
+</div>
+</header>
+<!-- Modal Overlay & Main Workspace -->
+<main class="ml-[260px] pt-16 h-screen flex items-center justify-center relative">
+<!-- Dashboard Placeholder Content (Blured) -->
+<div class="w-full max-w-container_max_width px-margin_desktop blur-sm select-none">
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-8 h-64 bg-white border border-outline-variant rounded-lg"></div>
+<div class="col-span-4 h-64 bg-white border border-outline-variant rounded-lg"></div>
+<div class="col-span-4 h-48 bg-white border border-outline-variant rounded-lg"></div>
+<div class="col-span-4 h-48 bg-white border border-outline-variant rounded-lg"></div>
+<div class="col-span-4 h-48 bg-white border border-outline-variant rounded-lg"></div>
+</div>
+</div>
+<!-- Setup Modal -->
+<div class="absolute inset-0 modal-overlay flex items-center justify-center z-50">
+<section class="bg-white w-full max-w-[560px] rounded-lg shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<div class="p-8 border-b border-outline-variant bg-surface-container-low">
+<h2 class="font-headline-md text-headline-md text-primary">Set Up Your Meeting</h2>
+<p class="font-body-md text-body-md text-secondary mt-1">Provide meeting details to initialize secure recording and transcription.</p>
+</div>
+<!-- Form Content -->
+<form class="p-8 space-y-6" id="setupForm">
+<!-- Meeting Title -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase block" for="meetingTitle">Meeting Title *</label>
+<input class="w-full bg-white border border-outline px-4 py-3 rounded focus:outline-none focus:border-primary focus:border-2 transition-all font-body-md text-body-md placeholder:text-outline-variant" id="meetingTitle" placeholder="e.g., Q3 Executive Hospitality Strategy Review" required="" type="text">
+</div>
+<!-- Department/Participants -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase block" for="participants">Department / Participants</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline pl-10 pr-4 py-3 rounded focus:outline-none focus:border-primary focus:border-2 transition-all font-body-md text-body-md placeholder:text-outline-variant" id="participants" placeholder="Sales Department, Operations Team..." type="text">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">groups</span>
+</div>
+</div>
+<!-- Date Picker -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase block" for="meetingDate">Date</label>
+<input class="w-full bg-white border border-outline px-4 py-3 rounded focus:outline-none focus:border-primary focus:border-2 transition-all font-body-md text-body-md" id="meetingDate" type="date">
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase block">Session Type</label>
+<select class="w-full bg-white border border-outline px-4 py-3 rounded focus:outline-none focus:border-primary focus:border-2 transition-all font-body-md text-body-md appearance-none">
+<option>Internal Briefing</option>
+<option>Client Negotiation</option>
+<option>Management Board</option>
+</select>
+</div>
+</div>
+<!-- CTA -->
+<div class="pt-4">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-title-sm text-title-sm hover:bg-primary-container transition-all active:scale-[0.98] flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+                            Start Recording
+                        </button>
+<p class="text-center font-body-md text-body-md text-outline mt-4">
+                            By starting, you agree to E-Land Hotel's privacy and recording policies.
+                        </p>
+</div>
+</form>
+</section>
+</div>
+</main>
+<!-- Subtle Background Atmosphere -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-20">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-tertiary-fixed rounded-full blur-[100px]"></div>
+</div>
+<script>
+        // Set default date to today
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('meetingDate');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+
+            // Form submission micro-interaction
+            const form = document.getElementById('setupForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                btn.innerHTML = `
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Initializing Recorder...
+                `;
+                btn.classList.add('opacity-80', 'pointer-events-none');
+                
+                // Simulate transition to recorder
+                setTimeout(() => {
+                    alert('Recording session initialized. Redirecting to workspace...');
+                }, 1000);
+            });
+        });
+    </script>
+
+
+<!-- Floating Navigation Menu Bar Injection -->
+<div id="stitch-nav-bar" style="position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 999999; display: flex; align-items: center; gap: 8px; padding: 8px; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 99px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: bold; letter-spacing: -0.01em;">
+  <a href="index.html" class="nav-item-btn" style="padding: 10px 20px; color: #fff; text-decoration: none; border-radius: 99px; transition: all 0.2s; display: flex; align-items: center; gap: 6px;">
+    📊 Dashboard
+  </a>
+  <a href="setup.html" class="nav-item-btn" style="padding: 10px 20px; color: #fff; text-decoration: none; border-radius: 99px; transition: all 0.2s; display: flex; align-items: center; gap: 6px;">
+    🛠️ Setup
+  </a>
+  <a href="editor.html" class="nav-item-btn" style="padding: 10px 20px; color: #fff; text-decoration: none; border-radius: 99px; transition: all 0.2s; display: flex; align-items: center; gap: 6px;">
+    🎙️ Live Editor
+  </a>
+</div>
+
+<style>
+  #stitch-nav-bar a:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const path = window.location.pathname;
+    const page = path.split("/").pop() || "index.html";
+    const items = document.querySelectorAll("#stitch-nav-bar a");
+    items.forEach(item => {
+      const href = item.getAttribute("href");
+      if (href === page || (page === "" && href === "index.html") || (page.indexOf(href) !== -1)) {
+        item.style.background = "#C5A880";
+        item.style.color = "#0B2240";
+      }
+    });
+  });
+</script>
+</body></html>
