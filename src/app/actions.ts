@@ -18,6 +18,20 @@ export async function sendWelcomeEmail(email: string) {
   }
 
   try {
+    const { db } = await import('../lib/firebase');
+    const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
+    
+    // Firestore에 이메일 저장
+    await addDoc(collection(db, 'subscribers'), {
+      email: email.trim(),
+      createdAt: serverTimestamp()
+    });
+  } catch (dbError) {
+    console.error('Firestore Save Error:', dbError);
+    // DB 저장에 실패해도 이메일은 계속 전송하도록 하거나 여기서 멈출 수 있습니다.
+  }
+
+  try {
     const { data, error } = await resend.emails.send({
       from: 'Automate Everything <onboarding@resend.dev>', // Resend 도메인 미인증 시 onboarding@resend.dev 고정 사용해야 함
       to: [email.trim()],
